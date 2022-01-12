@@ -1,56 +1,21 @@
-radio.onReceivedNumber(function (receivedNumber) {
-    if (1 == receivedNumber) {
-        basic.showLeds(`
-            # # # # .
-            # . . # .
-            # # # # .
-            # . . # .
-            # . . # .
-            `)
-    }
-    if (2 == receivedNumber) {
-        basic.showLeds(`
-            # # # . .
-            # . . # .
-            # # # . .
-            # . . # .
-            # # # . .
-            `)
-    }
-    if (3 == receivedNumber) {
-        basic.showLeds(`
-            # # # # .
-            # . . # .
-            # # # # .
-            # . . # .
-            # . . # .
-            `)
-        basic.showLeds(`
-            . . # . .
-            . . # . .
-            # # # # #
-            . . # . .
-            . . # . .
-            `)
-        basic.showLeds(`
-            # # # . .
-            # . . # .
-            # # # . .
-            # . . # .
-            # # # . .
-            `)
-    }
-})
 input.onButtonPressed(Button.A, function () {
-    radio.sendNumber(1)
+    radio.sendString("Pozik")
 })
 input.onButtonPressed(Button.AB, function () {
-    radio.sendNumber(3)
+    radio.sendString("Bihotza")
+})
+radio.onReceivedString(function (receivedString) {
+    if ("Pozik" == receivedString) {
+        basic.showIcon(IconNames.Happy)
+    }
+    if ("Triste" == receivedString) {
+        basic.showIcon(IconNames.Sad)
+    }
+    if ("Bihotza" == receivedString) {
+        basic.showIcon(IconNames.Heart)
+    }
 })
 input.onButtonPressed(Button.B, function () {
-    radio.sendNumber(2)
+    radio.sendString("Triste")
 })
 radio.setGroup(4)
-basic.forever(function () {
-	
-})
